@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">nApp</string>
+
+    <!-- SharedPreferences keys -->
+    <string name="preference_file_key">com.napp.napp.shared-preference-file</string>
+    <string name="preference_user_key">userJson</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

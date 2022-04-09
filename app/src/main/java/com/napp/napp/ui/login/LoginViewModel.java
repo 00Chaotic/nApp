@@ -3,9 +3,9 @@ package com.napp.napp.ui.login;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import android.util.Patterns;
 
+import com.napp.napp.MyApplication;
 import com.napp.napp.data.LoginRepository;
 import com.napp.napp.data.Result;
 import com.napp.napp.data.model.LoggedInUser;
@@ -29,9 +29,9 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+    public void login(MyApplication myApplication, String username, String password) {
+        // Can be launched in a separate asynchronous job
+        Result<LoggedInUser> result = loginRepository.login(myApplication, username, password);
 
         if (result instanceof Result.Success) {
             LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
