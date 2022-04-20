@@ -18,19 +18,20 @@ public class User {
     /**
      * Send SignIn request to GraphQL API server
      * @param client
-     * @param email
+     * @param username
      * @param password
      * @return CompletableFuture result with JWT token if successful
      */
-    public static CompletableFuture<String> signIn(ApolloClient client, String email, String password) {
+    public static CompletableFuture<String> signIn(ApolloClient client, String username, String password) {
         CompletableFuture<String> result = new CompletableFuture<>();
 
-        client.mutate(new SignInMutation(email, password))
+        client.mutate(new SignInMutation(username, password))
                 .enqueue(new ApolloCall.Callback<SignInMutation.Data>() {
                     @Override
                     public void onResponse(@NonNull Response<SignInMutation.Data> response) {
                         if (response.getData().signIn().error() != null) {
                             System.out.println("SignIn request returned error: " + response.getData().signIn().error());
+                            result.complete("");
                         } else if (response.getData().signIn().token() != null) {
                             result.complete(response.getData().signIn().token());
                         }
@@ -39,6 +40,7 @@ public class User {
                     @Override
                     public void onFailure(@NonNull ApolloException e) {
                         System.out.println("Error occurred on SignIn request: " + e.getMessage());
+                        result.complete("");
                     }
                 });
 

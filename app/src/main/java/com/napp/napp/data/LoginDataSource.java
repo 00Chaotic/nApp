@@ -26,7 +26,7 @@ public class LoginDataSource {
             String authResponse = authRequest.get(BuildConfig.API_REQUEST_TIMEOUT, TimeUnit.SECONDS);
 
             if (authResponse.isEmpty()) {
-                throw new Exception("Empty auth token");
+                return new Result.Error(new Exception("Empty auth token"));
             }
 
             // Auth token will only be parsed if trustworthy, otherwise throws exception
@@ -34,14 +34,14 @@ public class LoginDataSource {
             try {
                 jws = Jwts.parserBuilder().setSigningKey(BuildConfig.JWS_SECRET_KEY).build().parseClaimsJws(authResponse);
             } catch (JwtException e) {
-                throw new Exception("Error validating auth token", e);
+                return new Result.Error(new Exception("Error validating auth token", e));
             }
 
             // TODO add call to get user info (like name) once endpoint is created
 
             LoggedInUser.Role role = LoggedInUser.mapStringToRole((String) jws.getBody().get("role"));
             if (role == null) {
-                throw new Exception("Error mapping user role");
+                return new Result.Error(new Exception("Error mapping user role"));
             }
 
             LoggedInUser user =
