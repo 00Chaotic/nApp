@@ -1,0 +1,13 @@
+mutation SignIn($username: String!, $password: String!) {
+    signIn(username: $username, password: $password) {
+        token
+        error
+    }
+}
+
+mutation SignUp($location: String!, $name: String!, $password: String!, $phone_number: String!, $username: String!) {
+    signUp(location: $location, name: $name, password: $password, phone_number: $phone_number, username: $username) {
+        token
+        error
+    }
+}

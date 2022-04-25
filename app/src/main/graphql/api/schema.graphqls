@@ -1,0 +1,41 @@
+enum Role {
+    ADMIN
+    OPERATOR
+    USER
+}
+
+type User {
+    deleted: Boolean
+    id: String
+    location: String
+    name: String
+    phone_number: String
+    role: Role
+    username: String
+}
+
+type Mutation {
+    signIn(username: String!, password: String!): AuthResponse!
+    signUp(location: String!, name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
+    adminSignIn(username: String!, password: String!): AuthResponse!
+    adminSignUp(location: String!, name: String!, password: String!, phone_number: String!, role: String!, username: String!): AuthResponse!
+    addLocation(name: String!, address: String!, description: String): Location
+    deleteLocation(id: String!): Boolean
+}
+
+type AuthResponse {
+    token: String
+    error: String
+}
+
+type Query {
+    locations: [Location!]
+    location(id: String!): Location
+}
+
+type Location {
+    id: String
+    name: String
+    address: String
+    description: String
+}

@@ -1,7 +1,0 @@
-query GetLocations {
-    locations {
-        id
-        name
-        description
-    }
-}

@@ -1,5 +1,8 @@
 package com.napp.napp.data;
 
+import com.google.gson.Gson;
+import com.napp.napp.MyApplication;
+import com.napp.napp.R;
 import com.napp.napp.data.model.LoggedInUser;
 
 /**
@@ -34,20 +37,29 @@ public class LoginRepository {
 
     public void logout() {
         user = null;
-        dataSource.logout();
     }
 
-    private void setLoggedInUser(LoggedInUser user) {
+    private void setLoggedInUser(MyApplication myApplication, LoggedInUser user) {
         this.user = user;
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
+
+        // Serialise user object to JSON string
+        String userJson = new Gson().toJson(user);
+
+        // Write serialised user JSON to SharedPreferences
+        myApplication.getApplicationSharedPreferences().edit().putString(myApplication.getString(R.string.preference_user_key), userJson).apply();
     }
 
-    public Result<LoggedInUser> login(String username, String password) {
-        // handle login
-        Result<LoggedInUser> result = dataSource.login(username, password);
+    public Result<LoggedInUser> login(MyApplication myApplication, String username, String password) {
+        // Handle login
+        Result<LoggedInUser> result = dataSource.login(myApplication.getApolloClient(), username, password);
+
         if (result instanceof Result.Success) {
-            setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
+            setLoggedInUser(myApplication, ((Result.Success<LoggedInUser>) result).getData());
+        } else {
+            Result.Error errResult = (Result.Error) result;
+            System.out.println(errResult.getError().toString());
         }
         return result;
     }

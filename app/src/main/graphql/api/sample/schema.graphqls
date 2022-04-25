@@ -1,9 +1,0 @@
-type Query {
-    locations: [Locations]
-}
-
-type Locations {
-    id: String
-    name: String
-    description: String
-}
