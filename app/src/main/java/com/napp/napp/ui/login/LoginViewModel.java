@@ -1,15 +1,16 @@
 package com.napp.napp.ui.login;
 
+import android.util.Patterns;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import android.util.Patterns;
 
 import com.napp.napp.MyApplication;
+import com.napp.napp.R;
 import com.napp.napp.data.LoginRepository;
 import com.napp.napp.data.Result;
-import com.napp.napp.data.model.LoggedInUser;
-import com.napp.napp.R;
+import com.napp.napp.data.model.User;
 
 public class LoginViewModel extends ViewModel {
 
@@ -31,10 +32,10 @@ public class LoginViewModel extends ViewModel {
 
     public void login(MyApplication myApplication, String username, String password) {
         // Can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(myApplication, username, password);
+        Result<User> result = loginRepository.login(myApplication, username, password);
 
         if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+            User data = ((Result.Success<User>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
