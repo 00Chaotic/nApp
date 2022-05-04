@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.apollographql.apollo.ApolloClient;
+import com.napp.napp.graphql.Middleware.AuthorizationInterceptor;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Custom implementation of android.app.Application class.
@@ -27,11 +30,20 @@ public class MyApplication extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        // Create the client
-        setApolloClient(ApolloClient.builder().serverUrl(BuildConfig.GRAPHQL_API_ENDPOINT).build());
-
         // Initialise SharedPreferences variable
         initSharedPreferences();
+        this.getApplicationSharedPreferences().edit().clear().apply();
+
+        // Create ApolloClient
+        ApolloClient client = ApolloClient.builder()
+                .serverUrl(BuildConfig.GRAPHQL_API_ENDPOINT)
+                .okHttpClient(new OkHttpClient.Builder()
+                    .addInterceptor(new AuthorizationInterceptor(this))
+                    .build())
+                .build();
+
+        // Set ApolloClient
+        setApolloClient(client);
     }
 
     public ApolloClient getApolloClient() {
@@ -54,6 +66,6 @@ public class MyApplication extends android.app.Application {
      * Private initializer, as this should only initialised once and shared across the application
       */
     private void initSharedPreferences() {
-        this.sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        this.sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file), Context.MODE_PRIVATE);
     }
 }

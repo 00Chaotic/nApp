@@ -1,22 +1,27 @@
 enum Role {
     ADMIN
+    CLIENT
     OPERATOR
-    USER
 }
 
 type User {
-    deleted: Boolean
     id: String
-    location: String
+    is_active: Boolean
     name: String
     phone_number: String
-    role: Role
+    role: [Role]
     username: String
+}
+
+type Query {
+    user(id: String!): User
+    locations: [Location!]
+    location(id: String!): Location
 }
 
 type Mutation {
     signIn(username: String!, password: String!): AuthResponse!
-    signUp(location: String!, name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
+    signUp(name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
     adminSignIn(username: String!, password: String!): AuthResponse!
     adminSignUp(location: String!, name: String!, password: String!, phone_number: String!, role: String!, username: String!): AuthResponse!
     addLocation(name: String!, address: String!, description: String): Location
@@ -28,9 +33,83 @@ type AuthResponse {
     error: String
 }
 
-type Query {
-    locations: [Location!]
-    location(id: String!): Location
+type UserAdmin {
+    id: String
+    user_id: String
+    added_by_user_id: String
+    user: User
+    added_by_user: User
+}
+
+type UserOperator {
+    id: String
+    user_id: String
+    is_active: Boolean
+    stations: [Station]
+    user: User
+}
+
+type UserClient {
+    id: String
+    user_id: String
+    number_of_children: Int
+    predicted_usage_frequency: Int
+    predicted_usage_quantity: Int
+    user_client_notes: [UserClientNotes]
+    user: User
+    bookings: [Booking]
+}
+
+type UserClientNotes {
+    id: String
+    user_client_id: String
+    user_client: UserClient
+}
+
+type Booking {
+    id: String
+    user_client_id: String
+    station_id: String
+    purchased_units: Int
+    total_cost: Float
+    transaction_time: String
+    transaction_location: String
+    transaction_notes: String
+    is_cancelled: Boolean
+    is_complete: Boolean
+    feedback: BookingFeedback
+    station: Station
+    user_client: UserClient
+}
+
+type BookingFeedback {
+    id: String
+    booking_id: String
+    rating: Int
+    public_comment: String
+    private_feedback: String
+    feedback_date: String
+    booking: Booking
+}
+
+type Station {
+    id: String
+    user_operator_id: String
+    location: String
+    max_travel_distance: Float
+    daily_capacity: Int
+    is_active: Boolean
+    terms: [StationTerms]
+    bookings: [Booking]
+    user_operator: UserOperator
+}
+
+type StationTerms {
+    id: String
+    station_id: String
+    reference_title: String
+    description: String
+    station: Station
 }
 
 type Location {

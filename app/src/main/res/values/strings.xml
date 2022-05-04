@@ -2,8 +2,12 @@
     <string name="app_name">nApp</string>
 
     <!-- SharedPreferences keys -->
-    <string name="preference_file_key">com.napp.napp.shared-preference-file</string>
-    <string name="preference_user_key">userJson</string>
+    <string name="preference_file">com.napp.napp.shared-preference-file</string>
+    <string name="preference_user">user-json</string>
+    <string name="preference_user_auth_token">auth-token</string>
+
+    <!-- General Strings -->
+    <string name="not_set">Not set</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
