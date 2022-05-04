@@ -18,4 +18,11 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Strings related to user information -->
+    <string name="phone_number">Phone Number:</string>
+    <string name="location">Location:</string>
+
+    <!-- Strings related to bookings -->
+    <string name="booking_history">Booking History</string>
 </resources>
