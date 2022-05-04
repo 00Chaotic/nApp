@@ -1,5 +1,6 @@
 package com.napp.napp.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.napp.napp.MyApplication;
 import com.napp.napp.R;
 import com.napp.napp.databinding.ActivityLoginBinding;
+import com.napp.napp.ui.profile.ProfileActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -74,10 +76,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
-                }
 
-                // Complete and destroy login activity once successful
-                finish();
+                    // Starts next activity on successful login
+                    startNextActivity();
+
+                    // Complete and destroy login activity once successful
+                    finish();
+                }
             }
         });
 
@@ -130,5 +135,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(myApplication.getApplicationContext(), errorString, Toast.LENGTH_LONG).show();
+    }
+
+    private void startNextActivity() {
+        Intent intent = new Intent(this, ProfileActivity.class); // TODO change this to whatever activity we want to be after login
+        startActivity(intent);
     }
 }
