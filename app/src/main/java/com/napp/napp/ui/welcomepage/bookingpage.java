@@ -1,8 +1,10 @@
-package com.napp.napp;
+package com.napp.napp.ui.welcomepage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.napp.napp.R;
 
 public class bookingpage extends AppCompatActivity {
 
