@@ -14,6 +14,9 @@
         android:theme="@style/Theme.NApp"
         android:usesCleartextTraffic="true"> <!-- TODO Cleartext traffic is enabled to allow for easier development, but should be disabled when deployed to production -->
         <activity
+            android:name=".ui.faq.FAQPage"
+            android:exported="true" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -24,8 +27,7 @@
         </activity>
         <activity
             android:name=".ui.profile.ProfileActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>
