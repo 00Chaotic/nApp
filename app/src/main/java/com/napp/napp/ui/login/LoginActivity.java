@@ -23,6 +23,8 @@ import com.napp.napp.MyApplication;
 import com.napp.napp.R;
 import com.napp.napp.databinding.ActivityLoginBinding;
 import com.napp.napp.ui.profile.ProfileActivity;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.button.MaterialButton;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,9 +45,9 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = binding.username;
-        final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.login;
+        final TextInputEditText usernameEditText = (TextInputEditText) binding.username;
+        final TextInputEditText passwordEditText = (TextInputEditText) binding.password;
+        final MaterialButton loginButton = (MaterialButton) binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
