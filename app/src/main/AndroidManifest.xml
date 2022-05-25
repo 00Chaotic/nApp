@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"> <!-- TODO Cleartext traffic is enabled to allow for easier development, but should be disabled when deployed to production -->
         <activity
             android:name=".ui.faq.FAQPage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true">
@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name=".ui.profile.ProfileActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
     </application>
 
 </manifest>
