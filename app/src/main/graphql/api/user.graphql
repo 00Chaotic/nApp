@@ -6,6 +6,15 @@ query User($id: String!) {
         phone_number
         role
         username
+        user_client {
+            number_of_children
+            predicted_usage_frequency
+            predicted_usage_quantity
+            location {
+                latitude
+                longitude
+            }
+        }
     }
 }
 
@@ -21,4 +30,8 @@ mutation SignUp($name: String!, $password: String!, $phone_number: String!, $use
         token
         error
     }
+}
+
+mutation UpdateUser($name: String, $phone_number: String, $username: String, $number_of_children: Int, $location_latitude: Float, $location_longitude: Float) {
+    updateUser(name: $name, phone_number: $phone_number, username: $username, number_of_children: $number_of_children, location_latitude: $location_latitude, location_longitude: $location_longitude)
 }

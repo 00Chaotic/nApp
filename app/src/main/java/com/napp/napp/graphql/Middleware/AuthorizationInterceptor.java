@@ -20,7 +20,7 @@ public class AuthorizationInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         // Retrieve and deserialize user json
-        String authToken = myApplication.getApplicationSharedPreferences().getString(myApplication.getString(R.string.preference_user_auth_token), null);
+        String authToken = myApplication.getSharedPreferences().getString(myApplication.getString(R.string.preference_user_auth_token), null);
         if (authToken == null) {
             return chain.proceed(chain.request());
         }

@@ -21,8 +21,8 @@ android {
 
         // Secrets should correspond to key-value pairs inside the secrets file
         buildConfigField("String", "GRAPHQL_API_ENDPOINT", secretsProperties["GRAPHQL_API_ENDPOINT"])
-        // Secrets should correspond to key-value pairs inside the secrets file
         buildConfigField("String", "JWS_SECRET_KEY", secretsProperties["JWS_SECRET_KEY"])
+        buildConfigField("String", "GOOGLE_MAPS_API_KEY", secretsProperties["GOOGLE_MAPS_API_KEY"])
 
         // Other BuildConfig
         buildConfigField("Integer", "API_REQUEST_TIMEOUT", "5") // in seconds
@@ -69,4 +69,8 @@ dependencies {
 
     // Gson
     implementation 'com.google.code.gson:gson:2.9.0'
+
+    // Google Maps client library
+    implementation 'com.google.maps:google-maps-services:2.0.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
 }
