@@ -39,7 +39,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
@@ -89,11 +89,10 @@
         <TextView
             android:id="@+id/locationTextView"
             android:layout_width="178dp"
-            android:layout_height="22dp"
+            android:layout_height="40dp"
             android:text="@string/not_set"
             android:textColor="@color/color_6"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/locationLabel"
             app:layout_constraintEnd_toEndOf="@+id/phoneNumberTextView"
             app:layout_constraintStart_toStartOf="@+id/phoneNumberTextView"
             app:layout_constraintTop_toTopOf="@+id/locationLabel"

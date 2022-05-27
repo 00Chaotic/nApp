@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.apollographql.apollo.ApolloClient;
+import com.google.maps.GeoApiContext;
 import com.napp.napp.graphql.Middleware.AuthorizationInterceptor;
 
 import okhttp3.OkHttpClient;
@@ -21,6 +22,7 @@ public class MyApplication extends android.app.Application {
 
     private ApolloClient apolloClient;
     private SharedPreferences sharedPreferences;
+    private GeoApiContext geoAPIContext;
 
     /**
      * This method is executed once when the application is started (including
@@ -32,7 +34,7 @@ public class MyApplication extends android.app.Application {
 
         // Initialise SharedPreferences variable
         initSharedPreferences();
-        this.getApplicationSharedPreferences().edit().clear().apply();
+        this.getSharedPreferences().edit().clear().apply();
 
         // Create ApolloClient
         ApolloClient client = ApolloClient.builder()
@@ -44,6 +46,11 @@ public class MyApplication extends android.app.Application {
 
         // Set ApolloClient
         setApolloClient(client);
+
+        // Instantiate GeoAPIContext
+        this.geoAPIContext = new GeoApiContext.Builder()
+                .apiKey(BuildConfig.GOOGLE_MAPS_API_KEY)
+                .build();
     }
 
     public ApolloClient getApolloClient() {
@@ -58,7 +65,11 @@ public class MyApplication extends android.app.Application {
         this.apolloClient = client;
     }
 
-    public SharedPreferences getApplicationSharedPreferences() {
+    public GeoApiContext getGeoAPIContext() {
+        return geoAPIContext;
+    }
+
+    public SharedPreferences getSharedPreferences() {
         return sharedPreferences;
     }
 

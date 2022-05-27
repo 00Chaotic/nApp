@@ -30,11 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
         final TextView locationTextView = binding.locationTextView;
 
         // Retrieve and de-serialise user info
-        String userJson = myApplication.getApplicationSharedPreferences().getString(myApplication.getString(R.string.preference_user), null);
+        String userJson = myApplication.getSharedPreferences().getString(myApplication.getString(R.string.preference_user), null);
         User user = new Gson().fromJson(userJson, User.class);
 
         nameTextView.setText(user.getDisplayName());
         phoneNumberTextView.setText(user.getPhoneNumber());
-        // TODO add location once it is available from API
+        locationTextView.setText(user.getUserClient().getLocation());
     }
 }

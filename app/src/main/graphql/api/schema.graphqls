@@ -1,3 +1,33 @@
+type Query {
+    user(id: String!): User
+    users: [User!]
+    ClientsAndOperators: [User!]
+    UserCountByDate(startDate: String, endDate: String, grouping: String, userType: String): [UserCounts]
+    getUserClientLocation(id: String!): UserClientLocation
+    userOperators: [UserOperator!]
+    getAllBookings: [Booking!]
+    getBookings_byDate(date: String!): [Booking!]
+    getBooking_byID(id: String!): Booking
+    BookingCountByDate(startDate: String, endDate: String, grouping: String): [BookingCounts]
+}
+
+type Mutation {
+    updateUser(name: String, phone_number: String, username: String, number_of_children: Int, location_latitude: Float, location_longitude: Float): Boolean!
+    signIn(username: String!, password: String!): AuthResponse!
+    signUp(name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
+    adminSignIn(username: String!, password: String!): AuthResponse!
+    adminSignUp(name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
+    deleteUser(user_id: String!): ActionResponse!
+    deleteOperator(user_id: String!): ActionResponse!
+    setUserClientLocation(id: String!, latitude: Float!, longitude: Float!): Boolean
+    editBooking(booking_id: String!, user_client_id: String, station_id: String, purchased_units: Int, total_cost: Float, dateAsString: String, transaction_location: String, transaction_notes: String, is_cancelled: Boolean, is_complete: Boolean): Booking!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
 enum Role {
     ADMIN
     CLIENT
@@ -9,23 +39,23 @@ type User {
     is_active: Boolean
     name: String
     phone_number: String
-    role: [Role]
+    role: [Role!]
     username: String
+    created_at: DateTime
+    user_client: UserClient
+    user_operator: UserOperator
+    user_admin: UserAdmin
 }
 
-type Query {
-    user(id: String!): User
-    locations: [Location!]
-    location(id: String!): Location
+type UserCounts {
+    total: Int!
+    year: String
+    month: String
 }
 
-type Mutation {
-    signIn(username: String!, password: String!): AuthResponse!
-    signUp(name: String!, password: String!, phone_number: String!, username: String!): AuthResponse!
-    adminSignIn(username: String!, password: String!): AuthResponse!
-    adminSignUp(location: String!, name: String!, password: String!, phone_number: String!, role: String!, username: String!): AuthResponse!
-    addLocation(name: String!, address: String!, description: String): Location
-    deleteLocation(id: String!): Boolean
+type ActionResponse {
+    done: Boolean
+    error: String
 }
 
 type AuthResponse {
@@ -33,28 +63,12 @@ type AuthResponse {
     error: String
 }
 
-type UserAdmin {
-    id: String
-    user_id: String
-    added_by_user_id: String
-    user: User
-    added_by_user: User
-}
-
-type UserOperator {
-    id: String
-    user_id: String
-    is_active: Boolean
-    stations: [Station]
-    user: User
-}
-
 type UserClient {
     id: String
-    user_id: String
     number_of_children: Int
     predicted_usage_frequency: Int
     predicted_usage_quantity: Int
+    location: UserClientLocation
     user_client_notes: [UserClientNotes]
     user: User
     bookings: [Booking]
@@ -66,17 +80,39 @@ type UserClientNotes {
     user_client: UserClient
 }
 
-type Booking {
+type UserClientLocation {
     id: String
-    user_client_id: String
-    station_id: String
-    purchased_units: Int
-    total_cost: Float
-    transaction_time: String
-    transaction_location: String
+    latitude: Float
+    longitude: Float
+    user_client: UserClient
+}
+
+type UserOperator {
+    id: String
+    is_active: Boolean
+    stations: [Station]
+    user: User
+}
+
+type UserAdmin {
+    id: String
+    promoted_by_user_id: String
+    user: User
+    promoted_by_user: User
+    promoted_users: [UserAdmin!]
+}
+
+type Booking {
+    id: String!
+    user_client_id: String!
+    station_id: String!
+    purchased_units: Int!
+    total_cost: Float!
+    transaction_time: DateTime!
+    transaction_location: String!
     transaction_notes: String
-    is_cancelled: Boolean
-    is_complete: Boolean
+    is_cancelled: Boolean!
+    is_complete: Boolean!
     feedback: BookingFeedback
     station: Station
     user_client: UserClient
@@ -112,9 +148,8 @@ type StationTerms {
     station: Station
 }
 
-type Location {
-    id: String
-    name: String
-    address: String
-    description: String
+type BookingCounts {
+    total: Int!
+    year: String
+    month: String
 }

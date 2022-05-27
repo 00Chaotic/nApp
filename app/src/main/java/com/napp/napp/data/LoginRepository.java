@@ -48,7 +48,7 @@ public class LoginRepository {
         String userJson = new Gson().toJson(user);
 
         // Write serialised user JSON to SharedPreferences
-        myApplication.getApplicationSharedPreferences().edit().putString(myApplication.getString(R.string.preference_user), userJson).apply();
+        myApplication.getSharedPreferences().edit().putString(myApplication.getString(R.string.preference_user), userJson).apply();
     }
 
     public Result<User> login(MyApplication myApplication, String username, String password) {
