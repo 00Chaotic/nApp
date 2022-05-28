@@ -12,13 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NApp"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true">  <!-- TODO Cleartext traffic is enabled to allow for easier development, but should be disabled when deployed to production -->
         <activity
             android:name=".ui.bookingpage.bookingpage"
             android:exported="true" />
         <activity
             android:name=".ui.welcomepage.welcomepage"
-            android:exported="true" /> <!-- TODO Cleartext traffic is enabled to allow for easier development, but should be disabled when deployed to production -->
+            android:exported="true" />
         <activity
             android:name=".ui.faq.FAQPage"
             android:exported="true" />
