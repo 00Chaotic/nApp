@@ -12,15 +12,15 @@ import android.os.Bundle;
 
 public class specialinstruction extends AppCompatActivity {
 
-    Spinner spinnernappies = findViewById(R.id.spinner_nappies);
+    //Spinner spinnernappies = findViewById(R.id.spinner_nappies);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specialinstruction);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinnernappies.setAdapter(adapter);
+//        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+//        spinnernappies.setAdapter(adapter);
     }
 }

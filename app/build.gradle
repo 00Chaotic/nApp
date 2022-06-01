@@ -22,7 +22,7 @@ android {
         // Secrets should correspond to key-value pairs inside the secrets file
         buildConfigField("String", "GRAPHQL_API_ENDPOINT", secretsProperties["GRAPHQL_API_ENDPOINT"])
         buildConfigField("String", "JWS_SECRET_KEY", secretsProperties["JWS_SECRET_KEY"])
-        buildConfigField("String", "GOOGLE_MAPS_API_KEY", secretsProperties["GOOGLE_MAPS_API_KEY"])
+//        buildConfigField("String", "GOOGLE_MAPS_API_KEY", secretsProperties["GOOGLE_MAPS_API_KEY"])
 
         // Other BuildConfig
         buildConfigField("Integer", "API_REQUEST_TIMEOUT", "5") // in seconds
