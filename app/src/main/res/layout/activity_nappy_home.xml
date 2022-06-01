@@ -16,10 +16,11 @@
         android:textSize="38sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="27dp" />
+        tools:layout_editor_absoluteY="27dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signup"
+        android:id="@+id/button_first"
         android:layout_width="362dp"
         android:layout_height="230dp"
         android:layout_alignParentEnd="true"
@@ -34,7 +35,7 @@
         tools:layout_editor_absoluteY="136dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signup"
+        android:id="@+id/button_second"
         android:layout_width="186dp"
         android:layout_height="107dp"
         android:layout_alignParentEnd="true"
@@ -47,7 +48,7 @@
         tools:layout_editor_absoluteY="385dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signup"
+        android:id="@+id/bookingHistoryLabel"
         android:layout_width="186dp"
         android:layout_height="107dp"
         android:layout_alignParentEnd="true"
@@ -60,7 +61,7 @@
         tools:layout_editor_absoluteY="385dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/signup"
+        android:id="@+id/update_Profile"
         android:layout_width="186dp"
         android:layout_height="107dp"
         android:layout_alignParentEnd="true"

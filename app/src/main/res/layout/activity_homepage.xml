@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="300dp"
         android:layout_height="29dp"
         android:layout_alignParentEnd="true"
@@ -52,7 +52,7 @@
         tools:layout_editor_absoluteX="124dp"
         tools:layout_editor_absoluteY="571dp" />
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewE"
         android:layout_width="314dp"
         android:layout_height="105dp"
         android:layout_alignParentEnd="true"

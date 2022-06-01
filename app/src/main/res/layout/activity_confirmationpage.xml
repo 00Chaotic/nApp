@@ -85,7 +85,8 @@
         android:textColor="#000000"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_editor_absoluteY="182dp"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/signup"

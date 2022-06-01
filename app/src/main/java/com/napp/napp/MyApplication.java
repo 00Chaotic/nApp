@@ -20,9 +20,9 @@ import okhttp3.OkHttpClient;
  */
 public class MyApplication extends android.app.Application {
 
-    private ApolloClient apolloClient;
-    private SharedPreferences sharedPreferences;
-    private GeoApiContext geoAPIContext;
+//    private ApolloClient apolloClient;
+//    private SharedPreferences sharedPreferences;
+//    private GeoApiContext geoAPIContext;
 
     /**
      * This method is executed once when the application is started (including
@@ -33,50 +33,42 @@ public class MyApplication extends android.app.Application {
         super.onCreate();
 
         // Initialise SharedPreferences variable
-        initSharedPreferences();
-        this.getSharedPreferences().edit().clear().apply();
 
-        // Create ApolloClient
-        ApolloClient client = ApolloClient.builder()
-                .serverUrl(BuildConfig.GRAPHQL_API_ENDPOINT)
-                .okHttpClient(new OkHttpClient.Builder()
-                    .addInterceptor(new AuthorizationInterceptor(this))
-                    .build())
-                .build();
 
         // Set ApolloClient
-        setApolloClient(client);
+//        setApolloClient(client);
 
         // Instantiate GeoAPIContext
-        this.geoAPIContext = new GeoApiContext.Builder()
-                .apiKey(BuildConfig.GOOGLE_MAPS_API_KEY)
-                .build();
-    }
-
-    public ApolloClient getApolloClient() {
-        return apolloClient;
-    }
-
-    /**
-     * Private setter because this variable should not be set by external entities
-     * @param client
-     */
-    private void setApolloClient(ApolloClient client) {
-        this.apolloClient = client;
-    }
-
-    public GeoApiContext getGeoAPIContext() {
-        return geoAPIContext;
-    }
-
-    public SharedPreferences getSharedPreferences() {
-        return sharedPreferences;
-    }
-
-    /**
-     * Private initializer, as this should only initialised once and shared across the application
-      */
-    private void initSharedPreferences() {
-        this.sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file), Context.MODE_PRIVATE);
+//        this.geoAPIContext = new GeoApiContext.Builder()
+//                .apiKey(BuildConfig.GOOGLE_MAPS_API_KEY)
+//                .build();
     }
 }
+
+//    public ApolloClient getApolloClient() {
+//        return apolloClient;
+//    }
+//
+//    /**
+//     * Private setter because this variable should not be set by external entities
+//     * @param client
+//     */
+//    private void setApolloClient(ApolloClient client) {
+//        this.apolloClient = client;
+//    }
+//
+//    public GeoApiContext getGeoAPIContext() {
+//        return geoAPIContext;
+//    }
+//
+//    public SharedPreferences getSharedPreferences() {
+//        return sharedPreferences;
+//    }
+//
+//    /**
+//     * Private initializer, as this should only initialised once and shared across the application
+//      */
+//    private void initSharedPreferences() {
+//        this.sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file), Context.MODE_PRIVATE);
+//    }
+//}

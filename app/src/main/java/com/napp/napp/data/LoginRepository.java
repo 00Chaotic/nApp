@@ -40,27 +40,27 @@ public class LoginRepository {
     }
 
     private void setLoggedInUser(MyApplication myApplication, User user) {
-        this.user = user;
-        // If user credentials will be cached in local storage, it is recommended it be encrypted
-        // @see https://developer.android.com/training/articles/keystore
-
-        // Serialise user object to JSON string
-        String userJson = new Gson().toJson(user);
-
-        // Write serialised user JSON to SharedPreferences
-        myApplication.getSharedPreferences().edit().putString(myApplication.getString(R.string.preference_user), userJson).apply();
+//        this.user = user;
+//        // If user credentials will be cached in local storage, it is recommended it be encrypted
+//        // @see https://developer.android.com/training/articles/keystore
+//
+//        // Serialise user object to JSON string
+//        String userJson = new Gson().toJson(user);
+//
+//        // Write serialised user JSON to SharedPreferences
+//        myApplication.getSharedPreferences().edit().putString(myApplication.getString(R.string.preference_user), userJson).apply();
     }
 
-    public Result<User> login(MyApplication myApplication, String username, String password) {
-        // Handle login
-        Result<User> result = dataSource.login(myApplication, username, password);
-
-        if (result instanceof Result.Success) {
-            setLoggedInUser(myApplication, ((Result.Success<User>) result).getData());
-        } else {
-            Result.Error errResult = (Result.Error) result;
-            System.out.println(errResult.getError().toString());
-        }
-        return result;
-    }
+//    public Result<User> login(MyApplication myApplication, String username, String password) {
+//        // Handle login
+//        Result<User> result = dataSource.login(myApplication, username, password);
+//
+//        if (result instanceof Result.Success) {
+//            setLoggedInUser(myApplication, ((Result.Success<User>) result).getData());
+//        } else {
+//            Result.Error errResult = (Result.Error) result;
+//            System.out.println(errResult.getError().toString());
+//        }
+//        return result;
+//    }
 }

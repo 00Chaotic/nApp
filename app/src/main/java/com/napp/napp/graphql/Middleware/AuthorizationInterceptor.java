@@ -20,17 +20,17 @@ public class AuthorizationInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         // Retrieve and deserialize user json
-        String authToken = myApplication.getSharedPreferences().getString(myApplication.getString(R.string.preference_user_auth_token), null);
-        if (authToken == null) {
-            return chain.proceed(chain.request());
-        }
+        //String authToken = myApplication.getSharedPreferences().getString(myApplication.getString(R.string.preference_user_auth_token), null);
+//        if (authToken == null) {
+//            return chain.proceed(chain.request());
+//        }
+//
+//        // Inject Authorization header with user's JWT into request
+//        String authHeader = "Bearer " + authToken;
+//        Request req = chain.request().newBuilder()
+//                .addHeader("Authorization", authHeader)
+//                .build();
 
-        // Inject Authorization header with user's JWT into request
-        String authHeader = "Bearer " + authToken;
-        Request req = chain.request().newBuilder()
-                .addHeader("Authorization", authHeader)
-                .build();
-
-        return chain.proceed(req);
+        return null;//chain.proceed(req);
     }
 }

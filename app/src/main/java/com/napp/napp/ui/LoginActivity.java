@@ -1,0 +1,28 @@
+package com.napp.napp.ui;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.napp.napp.Homepage;
+import com.napp.napp.R;
+
+
+public class LoginActivity extends AppCompatActivity {
+    Button SignIn;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up_page);
+        SignIn =  (Button) findViewById(R.id.login);
+//        SignIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(LoginActivity.this, Homepage.class));
+//            }
+//        });
+    }
+}
