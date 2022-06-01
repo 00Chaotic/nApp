@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEF3E9"
+    android:background="#DADDD8"
     tools:context=".BookingPage">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -12,41 +12,43 @@
         android:layout_height="wrap_content"
         android:theme="@style/Theme.NApp.AppBarOverlay" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="250dp"
-        android:layout_height="177dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="2dp"
-        android:text="Engineers Without Borders Australia"
-        android:textColor="#000000"
-        android:textSize="34sp" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="323dp"
+        android:layout_height="190dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/ewb_australia" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="173dp"
-        android:layout_height="62dp"
-        android:layout_below="@+id/textView"
+        android:layout_width="192dp"
+        android:layout_height="69dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="189dp"
-        android:layout_marginBottom="466dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="431dp"
         android:text="Welcome"
         android:textColor="#025C05"
-        android:textSize="34sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="185dp"
-        android:layout_height="144dp"
+        android:layout_height="167dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="320dp"
+        android:layout_marginEnd="199dp"
+        android:layout_marginBottom="263dp"
         android:text="to Nappy wash Booking:"
-        android:textSize="34sp" />
+        android:textSize="42sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -59,14 +61,21 @@
         android:text="Let's find you a suitable washing machine"
         android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="162dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup"
+        android:layout_width="228dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="64dp"
-        android:text="Get Started" />
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="@color/color_5"
+        android:text="Get Started"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:ignore="MissingConstraints" />
 
 </RelativeLayout>

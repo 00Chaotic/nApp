@@ -9,60 +9,85 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="309dp"
-        android:layout_height="121dp"
+        android:layout_width="313dp"
+        android:layout_height="64dp"
+        android:text="SIGN-UP for"
+        android:textColor="#000000"
+        android:textSize="48sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="30dp" />
+
+    <TextView
+        android:id="@+id/textView99"
+        android:layout_width="313dp"
+        android:layout_height="125dp"
         android:text="Nappy Washing App"
         android:textColor="#0A830F"
         android:textSize="48sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="28dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="376dp"
-        android:layout_height="65dp"
-        android:ems="10"
-        android:hint="Enter Your Email:"
-        android:inputType="textPersonName"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="277dp" />
+        tools:layout_editor_absoluteY="94dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/userFullName"
         android:layout_width="376dp"
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Enter Your Full Name:"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="182dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="275dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/userAddress"
+        android:layout_width="376dp"
+        android:layout_height="65dp"
+        android:ems="10"
+        android:hint="Enter Your Location/Address:"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="539dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/PhoneNumber"
         android:layout_width="376dp"
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Enter Your Phone Number:"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="470dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="358dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/userPassword"
         android:layout_width="376dp"
         android:layout_height="65dp"
         android:ems="10"
         android:hint="Enter Your Password:"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="374dp" />
+        tools:layout_editor_absoluteY="455dp"
+        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="150dp"
-        android:layout_height="48dp"
-        android:text="Sign Up!
-"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="584dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signup"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="99dp"
+        android:backgroundTint="@color/color_5"
+        android:text="Sign-Up"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="647dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
