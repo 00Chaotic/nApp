@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF3E9"
+    tools:context=".timeactivity">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="332dp"
+        android:layout_height="82dp"
+        android:text="Time for Pickup:"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="319dp"
+        android:layout_height="24dp"
+        android:text="Please select a time for pick-up"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="88dp"
+        android:layout_height="26dp"
+        android:text="*Date:"
+        android:textColor="#035507"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="152dp" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="410dp"
+        android:layout_height="300dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="232dp"
+        android:layout_height="28dp"
+        android:text="*Pick-up time:"
+        android:textColor="#035507"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="496dp" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="341dp"
+        android:layout_height="39dp"
+        android:text="Morning (9-12):"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="536dp" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:text="Next"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="626dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
